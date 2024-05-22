@@ -1,0 +1,23 @@
+load("@rules_go//proto:def.bzl", "go_proto_library")
+load("@rules_buf//buf:defs.bzl", "buf_lint_test")
+load("@rules_proto//proto:defs.bzl", "proto_library")
+
+proto_library(
+    name = "abitofhelp_helloworld_v1_proto",
+    srcs = ["helloworld.proto"],
+    visibility = ["//visibility:public"],
+)
+
+buf_lint_test(
+    name = "abitofhelp_helloworld_v1_proto_lint",
+    config = "//:buf.yaml",
+    targets = [":abitofhelp_helloworld_v1_proto"],
+)
+
+go_proto_library(
+    name = "abitofhelp_helloworld_v1_go_proto",
+    compilers = ["@rules_go//proto:go_grpc"],
+    importpath = "github.com/abitofhelp/bzlmod/proto/abitofhelp/helloworld/v1",
+    proto = ":abitofhelp_helloworld_v1_proto",
+    visibility = ["//visibility:public"],
+)

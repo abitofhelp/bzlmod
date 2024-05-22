@@ -1,0 +1,1 @@
+The gen directory only is used when generating from proto files outside of bazel.
