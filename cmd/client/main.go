@@ -7,11 +7,10 @@ import (
 
 	"connectrpc.com/connect"
 	// Use the following imports when generating from proto files using 'buf generate'.
-	// helloworldv1 "github.com/abitofhelp/bzlmod/internal/gen/abitofhelp/helloworld/v1"
-	// "github.com/abitofhelp/bzlmod/internal/gen/abitofhelp/helloworld/v1/helloworldv1connect"
-
+	helloworldv1 "github.com/abitofhelp/bzlmod/internal/gen/abitofhelp/helloworld/v1"
+	"github.com/abitofhelp/bzlmod/internal/gen/abitofhelp/helloworld/v1/helloworldv1connect"
 	// Use the following imports when generating from proto files using Bazel build.
-	helloworldv1 "github.com/abitofhelp/bzlmod/bazel-bin/proto/abitofhelp/helloworld/v1/abitofhelp_helloworld_v1_go_proto_/github.com/abitofhelp/bzlmod/proto/abitofhelp/helloworld/v1"
+	// helloworldv1 "github.com/abitofhelp/bzlmod/bazel-bin/proto/abitofhelp/helloworld/v1/abitofhelp_helloworld_v1_go_proto_/github.com/abitofhelp/bzlmod/proto/abitofhelp/helloworld/v1"
 	// FIXME: "github.com/abitofhelp/bzlmod/bazel-bin/proto/abitofhelp/helloworld/v1/abitofhelp_helloworld_v1_go_proto_/github.com/abitofhelp/bzlmod/proto/abitofhelp/helloworld/v1/helloworldconnect"
 )
 
