@@ -17,19 +17,17 @@ gazelle_binary(
     ],
 )
 
-# gazelle:exclude bazel-*
-# gazelle:exclude internal/gen
-# gazelle:exclude scripts
-# gazelle:go_proto_compiler @rules_go//proto:go_proto  # want protoc-gen-go
-# gazelle:go_grpc_compilers @com_connectrpc_connect//cmd/protoc-gen-connect-go:protoc-gen-connect-go ##, @rules_go_grpc//proto:gen-go-grpc
 gazelle(
     name = "gazelle",
     gazelle = ":gazelle-buf",
 )
 
-# Provide for import of libraries either using the
-# import or go_default_library naming conventions.
-## gazelle:go_naming_convention import_alias
+# gazelle:exclude bazel-*
+# gazelle:exclude internal/gen
+# gazelle:exclude scripts
+# gazelle:go_grpc_compilers @com_connectrpc_connect//cmd/protoc-gen-connect-go:protoc-gen-connect-go ##, @rules_go_grpc//proto:go_grpc_v2
+# gazelle:go_naming_convention import_alias
+# gazelle:go_proto_compiler @rules_go//proto:go_proto  ## Uses protoc-gen-go from the plugin: "@org_golang_google_protobuf//cmd/protoc-gen-go"
 
 buildifier(
     name = "buildifier.check",
@@ -43,18 +41,3 @@ buildifier(
     mode = "check",
     verbose = True,
 )
-
-#proto_library(
-#    name = "root_proto",
-#    srcs = [
-#        "hello_world.proto",
-#    ],
-#    visibility = ["//visibility:public"],
-#    deps = ["@buf_deps//validate:validate_proto"],
-#)
-#
-#buf_lint_test(
-#    name = "root_proto_lint",
-#    config = "//:buf.yaml",
-#    targets = [":root_proto"],
-#)
