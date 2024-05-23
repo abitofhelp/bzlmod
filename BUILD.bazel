@@ -27,7 +27,7 @@ gazelle(
 # gazelle:exclude scripts
 # gazelle:go_grpc_compilers @com_connectrpc_connect//cmd/protoc-gen-connect-go:protoc-gen-connect-go ##, @rules_go_grpc//proto:go_grpc_v2
 # gazelle:go_naming_convention import_alias
-# gazelle:go_proto_compiler @rules_go//proto:go_proto  ## Uses protoc-gen-go from the plugin: "@org_golang_google_protobuf//cmd/protoc-gen-go"
+# gazelle:go_proto_compilers @rules_go//proto:go_proto  ## Uses protoc-gen-go from the plugin: "@org_golang_google_protobuf//cmd/protoc-gen-go"
 
 buildifier(
     name = "buildifier.check",
