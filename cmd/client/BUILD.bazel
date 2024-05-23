@@ -1,18 +1,18 @@
-load("@rules_go//go:def.bzl", "go_binary", "go_library")
-
-go_library(
-    name = "client_lib",
-    srcs = ["main.go"],
-    importpath = "github.com/abitofhelp/bzlmod/cmd/client",
-    visibility = ["//visibility:private"],
-    deps = [
-    "@com_connectrpc_connect//:go_default_library",
-    "//proto/abitofhelp/helloworld/v1:abitofhelp_helloworld_v1_go_proto"
-    ],
-)
-
-go_binary(
-    name = "client",
-    embed = [":client_lib"],
-    visibility = ["//visibility:public"],
-)
+#load("@rules_go//go:def.bzl", "go_binary", "go_library")
+#
+#go_library(
+#    name = "client_lib",
+#    srcs = ["main.go"],
+#    importpath = "github.com/abitofhelp/bzlmod/cmd/client",
+#    visibility = ["//visibility:private"],
+#    deps = [
+#    "@com_connectrpc_connect//:go_default_library",
+#    "//proto/abitofhelp/helloworld/v1:helloworld_go_lib:go_default_library"
+#    ],
+#)
+#
+#go_binary(
+#    name = "client",
+#    embed = [":client_lib"],
+#    visibility = ["//visibility:public"],
+#)

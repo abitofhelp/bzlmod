@@ -20,6 +20,8 @@ gazelle_binary(
 # gazelle:exclude bazel-*
 # gazelle:exclude internal/gen
 # gazelle:exclude scripts
+# gazelle:go_proto_compiler @rules_go//proto:go_proto  # want protoc-gen-go
+# gazelle:go_grpc_compilers @com_connectrpc_connect//cmd/protoc-gen-connect-go:protoc-gen-connect-go, @rules_go_grpc//proto:gen-go-grpc
 gazelle(
     name = "gazelle",
     gazelle = ":gazelle-buf",

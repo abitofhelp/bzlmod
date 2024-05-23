@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package abitofhelp.helloworld.v1;
 
+//option go_package = "github.com/abitofhelp/bzlmod/helloworld";
+
 // The request message containing the user's name.
 message SayHelloRequest {
   string name = 1;

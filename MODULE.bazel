@@ -17,14 +17,7 @@ go_sdk.host()
 
 go_deps = use_extension("@bazel_gazelle//:extensions.bzl", "go_deps")
 go_deps.from_file(go_mod = "//:go.mod")
-use_repo(
-    go_deps,
-    "com_connectrpc_connect",
-    "com_connectrpc_grpchealth",
-    "com_connectrpc_grpcreflect",
-    "org_golang_google_protobuf",
-    "org_golang_x_net",
-)
+use_repo(go_deps, "com_connectrpc_connect", "com_connectrpc_grpchealth", "com_connectrpc_grpcreflect", "org_golang_google_protobuf", "org_golang_x_net")
 
 buf = use_extension("@rules_buf//buf:extensions.bzl", "buf")
 
