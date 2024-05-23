@@ -1,9 +1,8 @@
-load("@rules_go//go:def.bzl", "go_library")
-load("@rules_go//proto:def.bzl", "go_proto_library")
 load("@rules_buf//buf:defs.bzl", "buf_lint_test")
-load("@rules_proto//proto:defs.bzl", "proto_library")
-load("@rules_go//proto:def.bzl", "go_proto_library")
+load("@rules_go//go:def.bzl", "go_library")
 load("@rules_go//proto:compiler.bzl", "go_proto_compiler")
+load("@rules_go//proto:def.bzl", "go_proto_library")
+load("@rules_proto//proto:defs.bzl", "proto_library")
 
 proto_library(
     name = "abitofhelp_helloworld_v1_proto_lib",
@@ -19,8 +18,7 @@ buf_lint_test(
 
 go_proto_compiler(
     name = "abitofhelp_helloworld_v1_go_proto_connect_compiler",
-    plugin ="@com_connectrpc_connect//cmd/protoc-gen-connect-go:protoc-gen-connect-go",
-
+    plugin = "@com_connectrpc_connect//cmd/protoc-gen-connect-go:protoc-gen-connect-go",
     visibility = ["//visibility:public"],
 )
 
