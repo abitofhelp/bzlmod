@@ -1,10 +1,11 @@
 load("@rules_buf//buf:defs.bzl", "buf_lint_test")
+load("@rules_go//go:def.bzl", "go_library")
 load("@rules_go//proto:compiler.bzl", "go_proto_compiler")
 load("@rules_go//proto:def.bzl", "go_proto_library")
 load("@rules_proto//proto:defs.bzl", "proto_library")
 
 proto_library(
-    name = "abitofhelp_helloworld_v1_proto_lib",
+    name = "abitofhelp_helloworld_v1_proto",
     srcs = ["helloworld.proto"],
     visibility = ["//visibility:public"],
 )
@@ -12,29 +13,30 @@ proto_library(
 buf_lint_test(
     name = "abitofhelp_helloworld_v1_proto_lint",
     config = "//:buf.yaml",
-    targets = [":abitofhelp_helloworld_v1_proto_lib"],
+    targets = [":abitofhelp_helloworld_v1_proto"],
 )
 
 go_proto_compiler(
     name = "abitofhelp_helloworld_v1_go_proto_connect_compiler",
-    plugin = "@com_connectrpc_connect//cmd/protoc-gen-connect-go:protoc-gen-connect-go",
+    plugin ="@com_connectrpc_connect//cmd/protoc-gen-connect-go:protoc-gen-connect-go",
     visibility = ["//visibility:public"],
 )
 
 # bazel query --output label '@com_connectrpc_connect//...'
 # @com_connectrpc_connect//cmd/protoc-gen-connect-go:protoc-gen-connect-go
 go_proto_library(
-    name = "abitofhelp_helloworld_v1_go_proto_lib",
+    name = "abitofhelp_helloworld_v1_go_proto",
     compilers = [
         ":abitofhelp_helloworld_v1_go_proto_connect_compiler",
+        #"@rules_go_grpc//proto:go_grpc_v2",
     ],
-    importpath = "github.com/abitofhelp/bzlmod/proto/abitofhelp/helloworld/v1",
-    proto = ":abitofhelp_helloworld_v1_proto_lib",
+    importpath = "github.com/abitofhelp/bzlmod/helloworld",
+    proto = ":abitofhelp_helloworld_v1_proto",
     visibility = ["//visibility:public"],
 )
 
 alias(
     name = "go_default_library",
-    actual = ":abitofhelp_helloworld_v1_go_proto_lib",
+    actual = ":abitofhelp_helloworld_v1_go_proto",
     visibility = ["//visibility:public"],
 )
